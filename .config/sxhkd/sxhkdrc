@@ -1,0 +1,121 @@
+/* F-keys */
+
+super + F1
+  for i in $(seq 7);do notify-send "$(date "+%H:%M:%S | %a, %d/%m/%Y ")" -r 3 -t 1200 &;sleep 1;done
+
+super + F4
+  st -e pulsemixer
+
+super + F7
+  warp-toggle
+
+super + F9 
+  dmenumount
+
+super + F10 
+  dmenuumount
+
+super + F11
+  mpv av://v4l2:/dev/video0 --profile=low-latency --untimed --vf=hflip,rotate=0 --title=webcam
+
+
+super + F12
+  checkup
+
+
+/* Reload stuff */
+
+super + shift + Escape
+  kill -USR1 $(pidof sxhkd)
+
+super + F5
+  kill -HUP "$(pgrep -u "$USER" "\bdwm$")" 
+
+
+/* Lock */
+
+super + Escape
+  slock
+
+/* Dmenu Scripts */
+
+alt + space
+  dmenu_run -i -l 9 -c
+
+/* super + grave */
+/*   demoji */
+
+super + shift + h
+  dmenuhandler
+
+super + BackSpace
+  sysact
+
+super + b
+  bookread
+
+super + Print
+  dmenurecord
+
+super + Delete
+  dmenurecord kill
+
+super + Scroll_Lock
+  killall screenkey || screenkey -f JetBrainsMono\ Nerd\ Font &
+  
+/* Screenshot */
+
+super + shift + x 
+  screenshot
+
+super + shift + s
+  scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+
+/* Apps */
+
+super + Return
+  st
+
+super + w
+  $BROWSER
+
+super + shift + w
+  st -e  sudo nmtui
+
+ctrl + Escape 
+  st -e btop
+
+super + shift + q
+  telegram-desktop
+
+super + m
+  st -e ncmpcpp; kill -35 $(cat ~/.cache/pidofbar)
+
+/* Media keys */
+
+XF86AudioMute
+  pamixer -t; volume; kill -34 $(cat ~/.cache/pidofbar)
+
+XF86Audio{Raise,Lower}Volume
+  pamixer --allow-boost -{i,d} 5; volume; kill -34 $(cat ~/.cache/pidofbar)
+
+XF86AudioPlay
+  mpc toggle; kill -35 $(cat ~/.cache/pidofbar)
+
+XF86Audio{Prev,Next}
+  mpc {prev,next}; kill -35 $(cat ~/.cache/pidofbar)
+
+XF86PowerOff
+  sysact
+
+XF86MonBrightness{Up,Down}
+  xbacklight -{inc,dec} 10
+
+/* Media Control */
+
+super + {comma,period}
+  mpc {prev,next}; kill -35 $(cat ~/.cache/pidofbar)
+
+super + shift + comma
+  mpc seek 0%; kill -35 $(cat ~/.cache/pidofbar)
