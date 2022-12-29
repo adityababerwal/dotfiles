@@ -1,0 +1,85 @@
+#!/bin/env sh
+
+# INIT
+printf "$$" > ~/.cache/pidofbar
+sec=0
+
+update_memory () { 
+  memory="$(free --mebi | awk '(NR==2){printf ("%d%", (($3/$2)*100)+1)}')"
+}
+
+update_cpu () {
+  cpu_temp="$(sensors | awk '/edge/ {print $2}')"
+}
+
+update_time () { 
+	time="$(date "+  %a %d %b    %H:%M:%S ")" 
+}
+
+update_bat () { 
+	# you might need to change the path depending on your device
+	read -r bat_status </sys/class/power_supply/BAT1/status
+	read -r bat_capacity </sys/class/power_supply/BAT1/capacity
+	if [ "$bat_status" = "Charging" ]; then
+		bat_status=""
+	elif [ "$bat_capacity" -gt 80 ]; then
+		bat_status=""
+	elif [ "$bat_capacity" -gt 60 ]; then
+		bat_status=""
+	elif [ "$bat_capacity" -gt 40 ]; then
+		bat_status=""
+	elif [ "$bat_capacity" -gt 20 ]; then
+		bat_status=""
+	else 
+		bat_status=""
+	fi
+	bat="$bat_status  $bat_capacity%"
+}
+
+update_vol () { 
+	vol="$([ "$(pamixer --get-mute)" = "false" ] && printf ' ' || printf '婢 ')$(pamixer --get-volume)%"
+}
+
+update_music () {
+  music="$( mpc | sed "/^volume:/d;s/\\&/&amp;/g;s/\\[paused\\].*//g;s/\\[playing\\].*//g;/^ERROR/Q" | paste -sd ' ' | awk -F'-' '{print $NF}' -;)"
+}
+
+update_network () {
+  network="$(nmcli connection show --active | tail -n 1 | awk '{print $1}')"
+}
+
+# We have to run this only once.
+update_vol
+update_music
+update_network
+
+display () { 
+	xsetroot -name " $music     $network   $vol  $time  $bat "
+	# xsetroot -name " $music         [ $network ][  $memory ][ $cpu_temp ][ $vol ]$time[ $bat ]"
+}
+
+# Handling receiving signal
+# RTMIN = 34 (always)
+trap	"update_vol;display"	"RTMIN"
+trap  "update_music;display" "RTMIN+1"
+
+## kill -m "$(cat ~/.cache/pidofbar)"
+# where m = 34 + n
+
+while true
+do
+	sleep 1 &
+  wait && { 
+		# to update item ever n seconds with a offset of m
+		## [ $((sec % n)) -eq m ] && udpate_item
+		[ $((sec % 1 )) -eq 0 ] && update_time
+		[ $((sec % 5)) -eq 0 ] && update_memory
+		[ $((sec % 5)) -eq 0 ] && update_cpu
+		[ $((sec % 10)) -eq 0 ] && update_bat
+		[ $((sec % 5)) -eq 0 ] && update_network
+
+		# how often the display updates ( 5 seconds )
+		[ $((sec % 1 )) -eq 0 ] && display
+		sec=$((sec + 1))
+	}
+done 

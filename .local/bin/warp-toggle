@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# If transmission-daemon is running, will ask to kill, else will ask to start.
+
+if [ $(warp-cli status | head -n 1 | cut -d' ' -f3) = Connected ] ;
+then
+	[ "$(printf "Yes\\nNo" | tofi  --prompt-text "Disconnect warp?")" = "Yes" ] && warp-cli disconnect && notify-send "Warp Disconnected"
+else
+	[ "$(printf "Yes\\nNo" | tofi  --prompt-text "Connect warp?")" = "Yes" ] && warp-cli connect && notify-send "Warp Connected"
+fi
+
+# sleep 2 && pkill -RTMIN+7 "${STATUSBAR:-dwmblocks}"

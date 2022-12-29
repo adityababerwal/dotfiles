@@ -1,0 +1,15 @@
+#!/bin/sh
+# A dmenu wrapper script for system functions.
+case "$(readlink -f /sbin/init)" in
+	*systemd*) ctl='systemctl' ;;
+	*) ctl='loginctl' ;;
+esac
+
+case "$(printf " lock\n log out\n refresh dwm\n reboot\n shutdown" | dmenu -i -c -l 9)" in
+	' lock') gpg-connect-agent --no-autostart reloadagent /bye && xset dpms force off; slock ;;
+	' log out') kill -TERM "$(pgrep -u "$USER" "\bdwm$")" ;;
+	' refresh dwm') kill -HUP "$(pgrep -u "$USER" "\bdwm$")" ;;
+	' reboot') reboot ;;
+	' shutdown') sudo -A poweroff ;;
+	*) exit 1 ;;
+esac

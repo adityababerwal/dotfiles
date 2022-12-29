@@ -1,0 +1,15 @@
+#!/bin/sh
+
+buds_mac="F2:C6:5C:E1:40:0D"
+buds_sink="bluez_output.F2_C6_5C_E1_40_0D.a2dp-sink"
+
+if [ "$(bluetoothctl devices Connected)" = "" ];
+then
+	bluetoothctl power off
+	bluetoothctl power on
+	bluetoothctl connect $buds_mac
+else
+	bluetoothctl power off
+fi
+
+kill -34 $(cat ~/.cache/pidofbar)

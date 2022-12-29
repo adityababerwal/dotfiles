@@ -1,0 +1,9 @@
+#!/bin/sh
+# A dmenu wrapper script for system functions.
+
+case "$(printf " Logout\n Reboot\n Kill\n" | tofi --prompt-text "")" in
+	' Logout') loginctl terminate-user $USER ;;
+	' Reboot') shutdown -r now ;;
+	' Kill') shutdown -h now ;;
+	*) exit 1 ;;
+esac
