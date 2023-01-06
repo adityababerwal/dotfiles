@@ -9,7 +9,7 @@
     "modules-left": ["wlr/workspaces"],
     // "modules-center": ["hyprland/window"], 
     "modules-center": ["clock"],
-    "modules-right": ["custom/pacman", "mpd", "tray", "pulseaudio", "network", "battery"],
+    "modules-right": ["mpd", "tray", "pulseaudio", "network", "battery"],
   
     "wlr/workspaces": {
         "on-click": "activate",
@@ -34,7 +34,11 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "mpd": {
-        "format": "♪ {title}",
+        "format": "{stateIcon} {title}",
+        "state-icons": {
+          "playing": "♪",
+          "paused": "",
+        },
         "format-stopped": "No music playing",
         //"max-length": 15,
         "interval": 10, 
