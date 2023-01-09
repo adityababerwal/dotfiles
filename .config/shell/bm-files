@@ -22,3 +22,4 @@ cfL	${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope		# lf's scope/preview file
 cfX	${XDG_CONFIG_HOME:-$HOME/.config}/sxiv/exec/key-handler	# sxiv (image viewer) key/script handler
 cfP ${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile
 cfp ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile
+cfh ${XDG_CONFIG_HOME:-$HOME/.config}/hypr/hyprland.conf

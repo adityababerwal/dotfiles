@@ -20,12 +20,12 @@ alias \
 	bc="bc -ql" \
 	mkd="mkdir -pv" \
 	yt="yt-dlp --add-metadata -f 137+140" \
-	yta="yt -x -f bestaudio/best" \
+	yta="yt-dlp -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
 	iitp-vpn="/opt/cisco/anyconnect/bin/vpnui" \
   rsync="rsync -avzh --progress" \
   aria2c="aria2c -j 16 -s 16 -x 16 -k 5M" \
-  dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+  dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 #	matlab="matlab -desktop -softwareopengl"
 # Colorize commands when possible.
 alias \
