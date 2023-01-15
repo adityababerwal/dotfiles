@@ -1,109 +1,123 @@
 {
-	"layer": "top",
-    "height": 28,
-	  // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-	//"margin-left": 8,
-	//"margin-right": 8,
-	//"margin-top": 8,
-    "modules-left": ["wlr/workspaces"],
-    // "modules-center": ["hyprland/window"], 
-    "modules-center": ["clock"],
-    "modules-right": ["mpd", "tray", "pulseaudio", "network", "battery"],
-  
-    "wlr/workspaces": {
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-          "1": "",
-          "2": "爵",
-          "3": "切",
-          "4": "",
-          "5": "",
-          "6": "6",
-          "7": "7",
-          "8": "8",
-          "9": "9",
-          "default": "1"
-        }
-      },
-    "clock": {
-        "format": "{:%T %a %e %b}",
-        "format-alt": "{:%a%e %b}",
-        "interval": 1, 
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "mpd": {
-        "format": "{stateIcon} {title}",
-        "state-icons": {
-          "playing": "♪",
-          "paused": "",
-        },
-        "format-stopped": "No music playing",
-        //"max-length": 15,
-        "interval": 10, 
-        "exec": "mpc current",
-        "exec-if": "pgrep mpd",
-        "on-click": "mpc toggle",
-        "on-click-right": "pkill ncmpcpp || footclient -e ncmpcpp"
-    },
+  "layer": "top",
+  "height": 28,
+  // "width": 1280, // Waybar width
+  "spacing": 4, // Gaps between modules (4px)
+  //"margin-left": 8,
+  //"margin-right": 8,
+  //"margin-top": 8,
+  "modules-left": ["wlr/workspaces"],
+  // "modules-center": ["hyprland/window"], 
+  "modules-center": ["clock"],
+  "modules-right": ["mpd", "tray", "pulseaudio", "network", "battery"],
 
-    "custom/pacman": { 
-        "format": "{icon} {}", 
-        "format-icons": [""],
-        "interval": 1800,                      // 30 minutes
-        "exec": "checkupdates | wc -l",       // # of updates 
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions 
-        "on-click": "footclient -e sb-popupgrade; pkill -SIGRTMIN+8 waybar", // update system 
-        "signal": 8 
-    }, 
+  "wlr/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "爵",
+      "3": "切",
+      "4": "",
+      "5": "",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "default": "1"
+    }
+    },
+  "clock": {
+    "format": "{:%T %a %e %b}",
+    "format-alt": "{:%a%e %b}",
+    "interval": 1, 
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "mpd": {
+    "format": "{stateIcon} {title}",
+    "state-icons": {
+      "playing": "♪",
+      "paused": "",
+    },
+    "format-stopped": "No music playing",
+    //"max-length": 15,
+    "interval": 10, 
+    "exec": "mpc current",
+    "exec-if": "pgrep mpd",
+    "on-click-right": "mpc toggle",
+    "on-click": "pkill ncmpcpp || footclient -e ncmpcpp"
+  },
 
-    "tray": {
-        "icon-size": 18,
-        "spacing": 4
+  "custom/pacman": { 
+    "format": "{icon} {}", 
+    "format-icons": [""],
+    "interval": 1800,                      // 30 minutes
+    "exec": "checkupdates | wc -l",       // # of updates 
+    "exec-if": "exit 0",                  // always run; consider advanced run conditions 
+    "on-click": "footclient -e sb-popupgrade; pkill -SIGRTMIN+8 waybar", // update system 
+    "signal": 8 
+  }, 
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 4
+  },
+  "backlight": {
+    "format": "{icon}",
+    "format-alt": "{percent}%",
+    // "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": ["", "", "", "", "", "", ""]
+  },
+  "battery": {
+    "states": {
+        // "good": 95,
+        "warning": 30,
+        "critical": 15
     },
-    "backlight": {
-        "format": "{icon}",
-        "format-alt": "{percent}%",
-        // "format-icons": ["", "", "", "", "", "", "", "", ""]
-		"format-icons": ["", "", "", "", "", "", ""]
+    "format": "{icon}",
+    "format-charging": "{icon} ",
+    "format-plugged": "{icon} ",
+    "format-alt": "{capacity}%",
+    // "format-icons": ["", "", "", "", ""]
+  "format-icons": ["", "", "", "", "", "", "", "", "", ""]
+  },
+  "pulseaudio": {
+    "format": " {icon}",
+    // "format-alt": "{volume}%",
+    "format-alt": "{volume}%",
+    "format-muted": "ﱝ",
+    "format-bluetooth": " {icon}",
+    "min-length": 11,
+    "align": 0,
+    "format-icons": {
+    // "default": ["", "", ""]
+    "default": ["-",
+                "--",
+                "---",
+                "----",
+                "-----",
+                "------",
+                "-------",
+                "--------",
+                "---------",
+                "----------"]
     },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}",
-        "format-charging": "{icon} ",
-        "format-plugged": "{icon} ",
-        "format-alt": "{capacity}%",
-        // "format-icons": ["", "", "", "", ""]
-		"format-icons": ["", "", "", "", "", "", "", "", "", ""]
-    },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-alt": "{volume}%",
-        "format-muted": "ﱝ",
-        "format-icons": {
-			"default": ["", "", ""]
-		},
-    },
-	"network": {
-        "format-wifi": "{icon}",
-        "format-ethernet": "{icon}",
-        "format-linked": " 直 No IP",
-        "format-disconnected": "{icon}",
-        "format-alt": "{signalStrength}% {bandwidthDownBytes}",
-        "align": 0,
-        // "interval": 1,
-        // "format-alt": "{ipaddr}/{cidr}",
-        "tooltip-format": "{essid}",
-		"format-icons": {
-			"wifi": "",
-			"ethernet": "",
-			"disconnected": "睊"
-		}
-    },
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "{icon}",
+    "format-linked": " 直 No IP",
+    "format-disconnected": "{icon}",
+    "format-alt": "{signalStrength}% {bandwidthDownBytes}",
+    // "align": 0.5,
+    // "interval": 1,
+    // "format-alt": "{ipaddr}/{cidr}",
+    "tooltip-format": "{essid}",
+  "format-icons": {
+    "wifi": "",
+    "ethernet": "",
+    "disconnected": "睊"
+  }
+  },
 
 }

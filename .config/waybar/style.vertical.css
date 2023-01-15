@@ -48,7 +48,8 @@ window#waybar {
 #workspaces  {
 	color: @fg_dark;
 	background: @bg;
-	padding: 0px 8px;
+	padding-right: 8px;
+  padding-left: 5px;
 	margin: 4px; 
   background: @bg;
 	border-radius: 12px;
@@ -77,7 +78,7 @@ window#waybar {
 
 #tray, #pulseaudio, #network, #backlight, #battery, #clock, #mpd, #custom-pacman {
 	background: @bg;
-	padding: 2px 8px;
+	padding: 12px 8px;
 	margin: 4px;
 	border-radius: 12px;
 }

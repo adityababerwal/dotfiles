@@ -1,2 +1,0 @@
-# waybar
-![Screenshot](Screenshot.png)
