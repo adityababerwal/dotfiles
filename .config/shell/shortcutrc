@@ -13,6 +13,7 @@ sc="cd /home/aditya/.local/bin && ls -a" \
 src="cd /home/aditya/.local/src && ls -a" \
 vv="cd /home/aditya/Videos && ls -a" \
 mov="cd /home/aditya/Movies && ls -a" \
+dat="cd /data && ls -a" \
 bf="$EDITOR /home/aditya/.config/shell/bm-files" \
 bd="$EDITOR /home/aditya/.config/shell/bm-dirs" \
 cfx="$EDITOR /home/aditya/.config/x11/xresources" \

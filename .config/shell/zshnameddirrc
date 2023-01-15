@@ -12,6 +12,7 @@ hash -d sc=/home/aditya/.local/bin
 hash -d src=/home/aditya/.local/src 
 hash -d vv=/home/aditya/Videos 
 hash -d mov=/home/aditya/Movies 
+hash -d dat=/data 
 hash -d bf=/home/aditya/.config/shell/bm-files 
 hash -d bd=/home/aditya/.config/shell/bm-dirs 
 hash -d cfx=/home/aditya/.config/x11/xresources 

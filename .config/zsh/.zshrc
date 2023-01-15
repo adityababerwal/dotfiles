@@ -62,7 +62,7 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
-bindkey -s '^o' 'lfub\n'
+bindkey -s '^o' 'lf\n'
 
 bindkey -s '^a' '$TERMINAL & disown\n'
 # bindkey -s '^a' 'bc -lq\n'
