@@ -75,7 +75,7 @@ window#waybar {
 
 /* ------------------------------------------------ */
 
-#tray, #pulseaudio, #network, #backlight, #battery, #clock, #mpd, #custom-pacman {
+#tray, #pulseaudio, #network, #backlight, #battery, #clock, #mpd, #custom-pacman, #memory {
 	background: @bg;
 	padding: 2px 8px;
 	margin: 4px;
@@ -147,6 +147,6 @@ window#waybar {
 
 /* ------------------------------------------------ */
 
-#custom-pacman {
+#memory {
   color: @red;
 }

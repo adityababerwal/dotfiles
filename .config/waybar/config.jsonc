@@ -9,7 +9,7 @@
   "modules-left": ["wlr/workspaces"],
   // "modules-center": ["hyprland/window"], 
   "modules-center": ["clock"],
-  "modules-right": ["mpd", "tray", "pulseaudio", "network", "battery"],
+  "modules-right": ["memory", "mpd", "tray", "pulseaudio", "network", "battery"],
 
   "wlr/workspaces": {
     "on-click": "activate",
@@ -119,5 +119,9 @@
     "disconnected": "睊"
   }
   },
+  "memory":{
+    "format":"󰍛 {percentage}%",
+    "interval": 3,
+  }
 
 }
