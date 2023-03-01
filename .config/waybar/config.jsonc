@@ -9,7 +9,7 @@
   "modules-left": ["wlr/workspaces"],
   // "modules-center": ["hyprland/window"], 
   "modules-center": ["clock"],
-  "modules-right": ["memory", "mpd", "tray", "pulseaudio", "network", "battery"],
+  "modules-right": ["mpd", "tray", "pulseaudio", "network", "battery"],
 
   "wlr/workspaces": {
     "on-click": "activate",
@@ -84,7 +84,7 @@
   "pulseaudio": {
     "format": " {icon}",
     // "format-alt": "{volume}%",
-    "format-alt": "{volume}%",
+    "on-click":"switch_audio_output",
     "format-muted": "ﱝ",
     "format-bluetooth": " {icon}",
     "min-length": 11,

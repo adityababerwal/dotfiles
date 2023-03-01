@@ -108,6 +108,7 @@ window#waybar {
 }
 #battery.warning {
   background: rgb(255,0,0);
+  color: @bg;
 }
 #battery.charging {
   color: rgb(0,0,200);
