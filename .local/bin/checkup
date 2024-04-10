@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Syncs repositories and downloads updates, meant to be run as a cronjob.
+
+date > /tmp/checkup.log
+
+notify-send "Repository Sync Running"
+
+sudo pacman -Syyuw --noconfirm || notify-send "Error downloading updates.
+
+Check your internet connection, if pacman is already running, or run update manually to see errors."
+# pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"
+
+if pacman -Qu | grep -v "\[ignored\]"
+then
+  act=$(dunstify "Repository Sync" "Updates available." --action="default,Click to update." -r 6969)
+else
+	notify-send "Repository Sync"  "Sync complete. No new packages for update."
+fi
+
+[ "$act" = "default" ] && footclient -a popp -e sb-popupgrade

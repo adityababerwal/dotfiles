@@ -1,0 +1,10 @@
+#!/bin/sh
+# A dmenu wrapper script for system functions.
+
+case "$(printf "󰍃 Logout\n Reboot\n Kill\n󰒲 Hibernate" | tofi --prompt-text "")" in
+	'󰍃 Logout') loginctl kill-session $XDG_SESSION_ID ;;
+	' Reboot') shutdown -r now ;;
+	' Kill') shutdown -h now ;;
+  '󰒲 Hibernate') gtklock & systemctl hibernate ;;
+	*) exit 1 ;;
+esac

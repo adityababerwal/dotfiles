@@ -1,0 +1,13 @@
+#!/bin/sh
+
+trueloc="$(readlink -f "$1")" &&
+case "$(file --mime-type -b "$trueloc")" in
+	image/* ) bgloc="$trueloc" ;;
+	inode/directory ) bgloc="$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" ;;
+	*) notify-send "Error" "Not a valid image." ; exit 1;;
+esac
+
+killall swaybg; setsid -f swaybg -m fill -i "$bgloc" >/dev/null
+# hyprctl hyprpaper unload all
+# hyprctl hyprpaper preload "$bgloc"
+# hyprctl hyprpaper wallpaper "eDP-1,$bgloc"

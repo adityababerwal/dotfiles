@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sinks=$(pactl -f 'json' list sinks | jq)
+chosen_sink=$(printf "%s" "$sinks" | jq '.[].description' | tofi --prompt-text "Choose audio sink")
+info_of_chosen_sink=$(printf "%s" "$sinks" | jq ".[] | select(.description == $chosen_sink)")
+pactl set-default-sink "$(echo "$info_of_chosen_sink" | jq '.index')"

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+buds_mac="98:67:2E:DF:C8:66"
+buds_mac_v2=$(echo $buds_mac | sed 's/:/_/g')
+
+if [ "$(bluetoothctl devices Connected)" = "" ];
+then
+	bluetoothctl power off
+	bluetoothctl power on
+  sleep 1
+	bluetoothctl connect $buds_mac
+  sleep 1
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%
+  pactl set-card-profile bluez_card.$buds_mac_v2 a2dp-sink-sbc_xq
+else
+	bluetoothctl power off
+fi
+
+# kill -34 $(cat ~/.cache/pidofbar)
