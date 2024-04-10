@@ -1,0 +1,102 @@
+* {
+  all: unset;
+  /*this is really important to isolate waybar from gtk*/
+  font-family: JetBrainsMono NF;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------ */
+
+#waybar {
+  /* background-color: rgba(26, 27, 38, 1); */
+  background-color: rgba(1, 22, 39, 1);
+  /* background-color: rgba(1, 22, 39, 1.0); */
+  border-radius: 15px;
+}
+
+/* ------------------------------------------------ */
+#workspaces {
+  /* background-color: rgba(1, 22, 39, 0.5); */
+  border-radius: 15px;
+  margin: 5px;
+}
+
+#workspaces button {
+  color: #bcbcbc;
+}
+
+/* ------------------------------------------------ */
+
+#workspaces button.active {
+  /* border: 2px solid rgba(200, 200, 200, 1); */
+  /* border-radius: 15px; */
+  color: red;
+}
+
+/* #workspaces button:hover { */
+/*   border-radius: 15px; */
+/*   background: white; */
+/* } */
+
+/* ------------------------------------------------ */
+
+#tray,
+#pulseaudio,
+#network,
+#backlight,
+#battery,
+#mpd,
+#clock,
+#bluetooth,
+#memory {
+  margin: 5px 5px;
+  /* padding: 6px 0px; */
+  /* background-color: rgba(56, 57, 68, 1); */
+  /* background-color: rgba(1, 22, 39, 0.5); */
+  border-radius: 15px;
+}
+
+/* ------------------------------------------------ */
+
+#battery.warning {
+  color: red;
+}
+
+#battery.charging {
+  background-color: green;
+}
+
+/* ------------------------------------------------ */
+
+#clock {
+  font-size: 25px;
+  border-radius: unset;
+}
+
+/* ------------------------------------------------ */
+#clock.day {
+  font-size: 15px;
+}
+
+/* ------------------------------------------------ */
+#pulseaudio.good {
+  color: lightgreen;
+}
+
+#pulseaudio.moderate {
+  color: yellow;
+}
+
+#pulseaudio.high {
+  color: orange;
+}
+
+#pulseaudio.vhigh {
+  color: red;
+}
+
+/* ------------------------------------------------ */
+#bluetooth {
+  font-size: 13px;
+}

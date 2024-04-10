@@ -1,0 +1,139 @@
+[
+  {
+    "layer": "top",
+    "margin": 3,
+    "position": "left",
+    "width": 50,
+    "exclusive": false,
+    // "modifier-reset": "release",
+    // "spacing": 35,
+    "modules-center": ["hyprland/workspaces"],
+    "modules-left": ["clock", "clock#day"],
+    "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery"],
+
+    "hyprland/workspaces": {
+      "on-click": "activate",
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "default": "1",
+      },
+      "persistent_workspaces": {
+        // "eDP-1": [1, 2, 3, 4, 5],
+      },
+    },
+    "clock": {
+      "format": "{:%H\n%M}",
+      "interval": 1,
+    },
+
+    "clock#day": {
+      "format": "{:%a\n %d\n%b}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month",
+        "on-scroll": -1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        },
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
+      },
+    },
+
+    "mpd": {
+      "format": "{stateIcon} {title}",
+      "state-icons": {
+        "playing": "♪",
+        "paused": "",
+      },
+      "format-stopped": "No music playing",
+      //"max-length": 15,
+      "interval": 10,
+      "exec": "mpc current",
+      "exec-if": "pgrep mpd",
+      "on-click-right": "mpc toggle",
+      "on-click": "pkill ncmpcpp || footclient -e ncmpcpp",
+    },
+
+    "tray": {
+      "icon-size": 18,
+      "spacing": 4,
+    },
+    "backlight": {
+      "format": "{icon}",
+      "format-alt": "{percent}%",
+      // "format-icons": ["", "", "", "", "", "", "", "", ""]
+      "format-icons": ["", "", "", "", "", "", ""],
+    },
+    "battery": {
+      "interval": 30,
+      "states": {
+        "warning": 25,
+      },
+      "format": "{capacity}",
+      "align": 0.5,
+      "format-icons": ["󰂃", "󰁼", "󰁾", "󰁹"],
+      "tooltip-format": "{capacity}%",
+    },
+    "pulseaudio": {
+      "format": "{icon}",
+      "on-click": "switch_audio_output",
+      "format-muted": "󰝟",
+      "format-bluetooth": "",
+      "align": 0.5,
+      "tooltip-format": "{volume}%",
+      "format-icons": {
+        "default": ["", "", ""],
+      },
+      "states": {
+        "good": 60,
+        "moderate": 80,
+        "high": 100,
+        "vhigh": 200,
+      },
+    },
+    "bluetooth": {
+      "format-connected-battery": "{device_battery_percentage}%",
+      "format-off": "",
+    },
+    "network": {
+      "format-wifi": "{icon}",
+      "format-ethernet": "{icon}",
+      "format-disconnected": "{icon}",
+      "format-alt": "{ipaddr}/{cidr}",
+      "align": 0.35,
+      // "interval": 1,
+      // "format-alt": "{ipaddr}/{cidr}",
+      "tooltip-format": "{essid}/{ipaddr}",
+      "format-icons": {
+        "wifi": "",
+        "ethernet": "󰈁",
+        "disconnected": "󰖪",
+      },
+    },
+
+    "memory": {
+      "format": "{percentage}%",
+      "interval": 3,
+    },
+  },
+]

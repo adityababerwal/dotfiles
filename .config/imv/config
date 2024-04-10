@@ -1,0 +1,11 @@
+[binds]
+
+b = exec $(setbg $imv_current_file & pkill imv)
+n = next 1
+p = prev 1
+<Ctrl+n> = overlay
+
+[options]
+overlay = true
+overlay_font = Monospace:15
+overlay_position_bottom = true

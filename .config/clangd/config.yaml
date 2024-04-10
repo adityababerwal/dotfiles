@@ -1,0 +1,24 @@
+If:
+  PathMatch: [.*\.c, .*\.h]
+
+CompileFlags:
+  Add: [-Wall, -Wextra]
+
+---
+If:
+  PathMatch: [.*\.cpp, .*\.hpp]
+
+CompileFlags:
+  Add: [-Wall, -Wextra, -std=gnu++2b] # c++23
+
+Index:
+  StandardLibrary: Yes
+
+---
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+Hover:
+  ShowAKA: Yes

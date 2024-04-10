@@ -1,0 +1,134 @@
+
+* {
+	/* font-family: JetBrains Mono Nerd Font; */
+	font-family: JetBrains Mono Nerd Font;
+	font-size: 16px;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------ */
+
+window#waybar {
+	background-color: rgba(26,27,38, 0.0);
+}
+
+/* ------------------------------------------------ */
+
+#workspaces button {
+ 	background-color: rgba(255,255,255, 0.07);
+	border-radius: 10px;
+	color: #bcbcbc;	
+	margin: 5px;
+	border: 2px solid rgba(200,200,200,0.0);
+	padding: 4px 18px 2px 18px;
+ 	font-size: 16px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	min-height: 25px;	
+}
+
+/* ------------------------------------------------ */
+
+#workspaces button.active {
+	border: 2px solid rgba(200,200,200,1.0);
+}
+
+/* ------------------------------------------------ */
+
+/* #window { */
+/* 	color: @fg; */
+/* } */
+
+/* ------------------------------------------------ */
+
+#tray, #pulseaudio, #network, #backlight, #battery, #clock, #mpd, #custom-pacman, #memory {
+ 	background-color: rgba(255,255,255, 0.07);
+	border-radius: 10px;
+	margin: 5px;
+	padding: 4px 18px 2px 18px;
+ 	font-size: 16px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	min-height: 25px;	
+}
+
+/* ------------------------------------------------ */
+
+#backlight {
+	color: yellow;
+}
+
+/* ------------------------------------------------ */
+
+#pulseaudio {
+	color: #29d88d;
+	border: 1px solid #29d88d;
+}
+
+/* ------------------------------------------------ */
+
+#network {
+  color: #13d2e7;
+	border: 1px solid #13d2e7;
+}
+
+/* ------------------------------------------------ */
+
+#battery {
+	color: #7facd5;
+	border: 1px solid #7facd5;
+}
+#battery.warning {
+  background: rgb(255,0,0);
+  color: blue;
+}
+#battery.charging {
+  color: blue;
+  box-shadow: 0 0 6px lightgreen;
+  /* text-shadow: 0 0 6px lightgreen; */
+  border: 1px solid lightgreen;
+  background: lightgreen;
+}
+
+/* ------------------------------------------------ */
+
+#clock {
+  color: #b782e2;
+	border: 1px solid #b782e2;
+}
+
+/* ------------------------------------------------ */
+
+ #mpd {
+   color: white;
+ }
+
+ #mpd.playing {
+   color: black;
+   background: repeating-linear-gradient(45deg, red, green, yellow, orange, blue);
+   background-size: 600% 100%;
+   animation: gradient 4s linear infinite;
+   animation-direction: alternate;
+ }
+
+@keyframes gradient {
+  0% {background-position: 0%;}
+  100% {background-position: 100%;}
+}
+
+/* ------------------------------------------------ */
+
+#memory {
+  color: red;
+}
+
+#tray, #pulseaudio, #network, #backlight, #battery, #clock, #mpd, #custom-pacman, #memory {
+ 	background-color: rgba(255,255,255, 0.07);
+	border-radius: 10px;
+	margin: 5px;
+	padding: 4px 18px 2px 18px;
+ 	font-size: 16px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	min-height: 25px;	
+  color: white;
+  border: 1px solid white;
+}
+
